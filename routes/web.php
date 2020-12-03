@@ -4,15 +4,15 @@ Route::view('/', function() {
 });
 Auth::routes();
 
-Route::get('/adminlogin', 'Auth\LoginController@showAdminLoginForm')->name('login.admin');
-Route::get('/writerlogin', 'Auth\LoginController@showWriterLoginForm')->name('login.writer');
-Route::get('/adminregister', 'Auth\RegisterController@showAdminRegisterForm')->name('register.admin');
-Route::get('/writerregister', 'Auth\RegisterController@showWriterRegisterForm')->name('register.writer');
+Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('login.admin');
+Route::get('/login/writer', 'Auth\LoginController@showWriterLoginForm')->name('login.writer');
+Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm')->name('register.admin');
+Route::get('/register/writer', 'Auth\RegisterController@showWriterRegisterForm')->name('register.writer');
 
-Route::post('/adminlogin', 'Auth\LoginController@adminLogin');
-Route::post('/writerlogin', 'Auth\LoginController@writerLogin');
-Route::post('/adminregister', 'Auth\RegisterController@createAdmin')->name('register.admin');
-Route::post('/writerregister', 'Auth\RegisterController@createWriter')->name('register.writer');
+Route::post('/login/admin', 'Auth\LoginController@adminLogin');
+Route::post('/login/writer', 'Auth\LoginController@writerLogin');
+Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('register.admin');
+Route::post('/register/writer', 'Auth\RegisterController@createWriter')->name('register.writer');
 
 Route::view('/home', 'home')->middleware('auth');
 Route::group(['middleware' => 'auth:admin'], function () {
